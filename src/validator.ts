@@ -12,7 +12,7 @@ const isDefined = value => value !== void 0 && value !== null && value !== '';
 
 const regex = /^#(?:[0-9a-f]{3}){1,2}$/i;
 
-const isHexColor = (color: string) => regex.test(color);
+const isHexColor = (color: string): boolean => regex.test(color);
 
 export const validator: FieldValidationFunctionSync = fieldValidatorArgs => {
   const { value, message = defaultMessage, customArgs } = fieldValidatorArgs;
