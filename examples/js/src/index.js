@@ -9,10 +9,9 @@ const validationSchema = {
 
 const formValidation = createFormValidation(validationSchema);
 
-// TODO: Update example values 'test' and/or 10 if needed
 Promise.all([
   formValidation.validateField('myField', 'test'),
-  formValidation.validateField('myField', 10),
+  formValidation.validateField('myField', '#1f1f1f'),
 ]).then(([failedResult, succeededResult]) => {
   document.getElementById('app').innerHTML = `
 <div style="flex-grow: 1;margin-left:2rem;">
@@ -32,7 +31,7 @@ ${JSON.stringify(failedResult, null, 2)}
   <h2>Example with succeeded result:</h2>
 
 <pre>
-formValidation.validateField('myField', 10)
+formValidation.validateField('myField', '#1f1f1f')
 </pre>
 
   <h3>Result: </h3>
