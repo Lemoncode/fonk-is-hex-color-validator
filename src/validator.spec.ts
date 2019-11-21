@@ -1,82 +1,246 @@
-import { validator, setErrorMessage } from './validator';
+import { setErrorMessage, validator } from './validator';
 
-// TODO: Add specs
 describe('fonk-is-hex-color-validator specs', () => {
-  it('should return succeeded validation when it feeds value equals undefined', () => {
-    // Arrange
-    const value = void 0;
+  it('should return succeeded validation when value equals #1f1f1f', () => {
+    const value = '#1f1f1f';
 
-    // Act
     const result = validator({ value });
 
-    // Assert
     expect(result).toEqual({
       succeeded: true,
       message: '',
-      type: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return succeeded validation when value equals #AFAFAF', () => {
+    const value = '#AFAFAF';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return succeeded validation when value equals #1AFFa1', () => {
+    const value = '#1AFFa1';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return succeeded validation when value equals #222fff', () => {
+    const value = '#222fff';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return succeeded validation when value equals #F00', () => {
+    const value = '#F00';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return succeeded validation when it feeds value equals undefined', () => {
+    const value = void 0;
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
+      type: 'IS_HEX_COLOR',
     });
   });
 
   it('should return succeeded validation when it feeds value equals null', () => {
-    // Arrange
     const value = null;
 
-    // Act
     const result = validator({ value });
 
-    // Assert
     expect(result).toEqual({
       succeeded: true,
       message: '',
-      type: '',
+      type: 'IS_HEX_COLOR',
     });
   });
 
   it('should return succeeded validation when it feeds value equals empty string', () => {
-    // Arrange
     const value = '';
 
-    // Act
     const result = validator({ value });
 
-    // Assert
     expect(result).toEqual({
       succeeded: true,
       message: '',
-      type: '',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value is an integer', () => {
+    const value = 123;
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value is a string', () => {
+    const value = 'test';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals #afafah', () => {
+    const value = '#afafah';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals #123abce', () => {
+    const value = '#123abce';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals aFaE3f ', () => {
+    const value = 'aFaE3f';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals F00', () => {
+    const value = 'F00';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals #afaf', () => {
+    const value = '#afaf';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals #F0h', () => {
+    const value = '#F0h';
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals false', () => {
+    const value = false;
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
+    });
+  });
+
+  it('should return failed validation when value equals true', () => {
+    const value = true;
+
+    const result = validator({ value });
+
+    expect(result).toEqual({
+      succeeded: false,
+      message: 'Provided value is not a valid hexadecimal color',
+      type: 'IS_HEX_COLOR',
     });
   });
 
   it('should overwrite default message when it feeds value and message', () => {
-    // Arrange
     const value = 'test';
     const message = 'other message';
 
-    // Act
     const result = validator({ value, message });
 
-    // Assert
     expect(result).toEqual({
       succeeded: false,
       message: 'other message',
-      type: '',
+      type: 'IS_HEX_COLOR',
     });
   });
 
   it('should overwrite default message when it feeds value and calls to setErrorMessage', () => {
-    // Arrange
     const value = 'test';
 
     setErrorMessage('other message');
 
-    // Act
     const result = validator({ value });
 
-    // Assert
     expect(result).toEqual({
       succeeded: false,
       message: 'other message',
-      type: '',
+      type: 'IS_HEX_COLOR',
     });
   });
 });

@@ -1,7 +1,7 @@
 {
   "name": "@lemoncode/fonk-is-hex-color-validator",
   "version": "0.1.0",
-  "description": "// TODO: Update description: This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to validate if a field of a form ...",
+  "description": "This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to validate if a field of a form is a valid hexadecimal color",
   "main": "dist/@lemoncode/fonk-is-hex-color-validator.cjs.js",
   "module": "dist/@lemoncode/fonk-is-hex-color-validator.esm.js",
   "typings": "typings/index.d.ts",

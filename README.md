@@ -6,9 +6,7 @@
 
 This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to:
 
-// TODO: Update description and example.
-
-- Validate if a field of a form ....
+- Validate if a field of a form is a valid hexadecimal color.
 
 How to install it:
 
@@ -23,7 +21,7 @@ We have the following form model:
 ```
 const myFormValues = {
   product: 'shoes',
-  price: 20,
+  color: '#1f1f1f',
 }
 ```
 
@@ -34,7 +32,7 @@ import { isHexColor } from '@lemoncode/fonk-is-hex-color-validator';
 
 const validationSchema = {
   field: {
-    price: [isHexColor.validator],
+    color: [isHexColor.validator],
   },
 };
 ```
@@ -56,7 +54,7 @@ import { isHexColor } from '@lemoncode/fonk-is-hex-color-validator';
 
 const validationSchema = {
   field: {
-    price: [
+    color: [
       {
         validator: isHexColor.validator,
         message: 'Error message only updated for the validation schema',
